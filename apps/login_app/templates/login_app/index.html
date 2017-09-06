@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error'%}
+                <p style="color: red">{{message}}</p>
+            {% endif %}
+            {% if message.tags == 'success'%}
+                <p style="color: green">{{message}}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <h1>Register here:</h1>
+    <form action="/register" method="post">
+        {% csrf_token %}
+       
+        <input type="text" name="first_name" placeholder="First name"><br>
+       
+        <input type="text" name="last_name" placeholder="Last name"><br>
+       
+        <input type="email" name="email" placeholder="Email"><br>
+        
+        <input type="password" name="password" placeholder="Password"><br>
+      
+        <input type="password" name="confirm_pass" placeholder="Confirm Password"><br><br>
+        
+        <input type="submit" value="Register">
+    </form>
+    
+    <h1>Login here:</h1>
+    <form action="/login" method="post">
+        {% csrf_token %}  
+        <input type="email" name="email" placeholder="Email"><br>
+        
+        <input type="password" name="password" placeholder="Password"><br>
+              
+        <input type="submit" value="Login">
+    </form>
+
+
+</body>
+</html>
